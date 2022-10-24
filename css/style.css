@@ -1,0 +1,135 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700);
+.submit,
+body {
+    font-family: "Source Sans Pro", Arial, sans-serif;
+}
+body {
+    font-size: 18px;
+    background: #eee;
+    color: #1f2024;
+}
+footer {
+    position: fixed;
+    padding-top: 100%;
+    color: #fff;
+}
+a {
+    text-decoration: none;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.fa-solid {
+    height: 80px;
+    width: 80px;
+}
+.rating {
+    max-width: 400px;
+    margin: 80px auto;
+    background: #fff;
+    padding: 1em;
+    border-radius: 3px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.rating__title {
+    text-align: center;
+    font-weight: 700;
+    display: block;
+}
+.rating__list {
+    max-width: 300px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 1em 0;
+}
+.disable,
+.feedback,
+.rating__input {
+    display: none;
+}
+.rating__label {
+    padding: 5px 3px;
+    font-size: 26px;
+    filter: grayscale(1);
+    opacity: 0.7;
+    cursor: pointer;
+}
+.rating__label.active {
+    filter: grayscale(0);
+    opacity: 1;
+    transition: 0.1s;
+}
+.rating__label:hover {
+    filter: grayscale(0.84);
+    transform: scale(1.1);
+    transition: 0.1s;
+}
+.feedback {
+    width: 100%;
+}
+.feedback input,
+.feedback textarea {
+    max-width: 300px;
+    width: 100%;
+    display: block;
+    margin: 0.5em auto;
+    padding: 0.5em;
+    font-family: inherit;
+    border: 1px solid #d1d2d7;
+    border-radius: 3px;
+}
+.feedback input:active,
+.feedback input:focus,
+.feedback textarea:active,
+.feedback textarea:focus {
+    border-color: #1f2024;
+    box-shadow: 0 0 0 3px #3498db;
+    transition: 0.1s;
+    outline: 0;
+}
+.feedback textarea {
+    height: 100px;
+}
+.feedback button {
+    margin: 1em auto;
+    display: table;
+    text-align: center;
+}
+.feedback button:active,
+.feedback button:focus {
+    outline: 0;
+}
+.cb911_logo {
+    width: 250px;
+    position: absolute;
+    top: 1em;
+    left: 50%;
+    margin-left: -125px;
+}
+.submit {
+    color: #ecedef;
+    background-color: #9a9da8;
+    border-radius: 3px;
+    border: 0;
+    padding: 9px 15px;
+    font-size: 15px;
+}
+#negative {
+    display: none;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+button.not-disabled {
+    color: #fff;
+    background-color: #3498db;
+    text-shadow: 0 1px 1px #3498db;
+    cursor: pointer;
+}
+button.not-disabled:hover {
+    background-color: #1f2024;
+    transition: 0.1s;
+}

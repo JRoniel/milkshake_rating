@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Rating - John Roniel</title>
+        <link rel="stylesheet" href="css/style.css" type="text/css" />
+        <link rel="stylesheet" href="css/emoji.css" type="text/css" />
+    </head>
+    <body>
+        <form class="rating">
+            <h3 class="rating__title">
+                Como foi sua experiência no nosso espaço?
+                <div class="rating__list">
+                    <div class="rating__item">
+                        <input class="rating__input rating--1" id="rating-1-2" type="radio" value="1" name="rating" />
+                        <label class="rating__label rating--1" for="rating-1-2"><i class="em em-angry"></i></label>
+                    </div>
+                    <div class="rating__item">
+                        <input class="rating__input rating--2" id="rating-2-2" type="radio" value="2" name="rating" />
+                        <label class="rating__label rating--2" for="rating-2-2"><i class="em em-disappointed"></i></label>
+                    </div>
+                    <div class="rating__item">
+                        <input class="rating__input rating--3" id="rating-3-2" type="radio" value="3" name="rating" />
+                        <label class="rating__label rating--3" for="rating-3-2"><i class="em em-expressionless"></i></label>
+                    </div>
+                    <div class="rating__item">
+                        <input class="rating__input rating--4" id="rating-4-2" type="radio" value="4" name="rating" />
+                        <label class="rating__label rating--4" for="rating-4-2"><i class="em em-grinning"></i></label>
+                    </div>
+                    <div class="rating__item">
+                        <input class="rating__input rating--5" id="rating-5-2" type="radio" value="5" name="rating" />
+                        <label class="rating__label rating--5" for="rating-5-2"><i class="em em-star-struck"></i></label>
+                    </div>
+                </div>
+            </h3>
+
+            <div class="feedback">
+                <p id="negative">O que aconteceu?</p>
+                <textarea id="comentario" placeholder="Como você se sentiu?"></textarea>
+                <input type="text" id="nome" placeholder="Seu nome (opcional)" />
+                <input type="number" id="telefone" placeholder="Seu telefone (opcional)" />
+                <button type="button" onclick="salveForm();" class="submit">Enviar</button>
+            </div>
+        </form>
+        <script src="controller/jquery.min.js" type="text/javascript"></script>
+        <script src="controller/controller.js"></script>
+    </body>
+</html>
