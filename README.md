@@ -1,5 +1,5 @@
 # Milkshake_Rating
-# Versao 0.1
+- Versao 0.1
 
 Criado com a ideia inicial de receber feedback de clientes de um local ou usuários de um serviço.
 
