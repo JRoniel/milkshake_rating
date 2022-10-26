@@ -46,12 +46,6 @@ ul {
     display: flex;
     justify-content: center;
 }
-.pointer {
-    cursor: pointer;
-}
-.default {
-    cursor: default;
-}
 #negative,
 .disable,
 .feedback,

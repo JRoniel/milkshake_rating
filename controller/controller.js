@@ -1,15 +1,17 @@
+this._submit = false;
 this.disable_submit();
 
 // Ativando botao
 function enable_submit() {
+    this._submit = true;
     let btn = document.querySelector('.submit');
     btn.classList.add('not-disabled');
-    btn.classList.add('pointer');
-    btn.classList.remove('default');
+    btn.classList.add('cursor', 'pointer');
 }
 
 // Desligando botao
 function disable_submit() {
+    this._submit = false;
     let btn = document.querySelector('.submit');
     btn.addEventListener('submit', b => {
         //Cancelando o evento 'submit' do botão
@@ -17,8 +19,7 @@ function disable_submit() {
     });
 
     btn.classList.remove('not-disabled');
-    btn.classList.add('default');
-    btn.classList.remove('pointer');
+    btn.classList.add('cursor',  'default');
 }
 
 //Liberando área do formulário apos voto
@@ -37,28 +38,33 @@ function getElement(data) {
 
 //Capturando dados do formulario e enviando para destino (console)
 function salveForm() {
-    let data = new Object();
-    data.voto = $("input[name=rating]").filter(":checked").val();
-    data.comentario = getElement("comentario").value;
-    data.nome = getElement("nome").value == "" ? "Usuário" : getElement("nome").value;
+    //Verifica se o usuario está permitido a enviar seu voto
+    if(this._submit){
+        let data = new Object();
+        data.voto = $("input[name=rating]").filter(":checked").val();
+        data.comentario = getElement("comentario").value;
+        data.nome = getElement("nome").value == "" ? "Usuário" : getElement("nome").value;
 
-    //Verificando se existe algum voto definido no objeto 'data'
-    if (data.voto != undefined) {
-        console.log(data);
-        //Substituindo formulario por animação
-        let elem = document.querySelector('.rating');
-        elem.innerHTML = `<span class='c'><div class="c-loader"></div></span>`;
-        
-        //Timeout de 0,5seg para remover animação e escrever resultados e agradecimentos.
-        setTimeout(()=>{
-            elem.innerHTML = `
-            <p class='thank'>${data.nome}, Satisfação: ${data.voto}/5</p>
-            <h3 class='thank'>Obrigado por participar da pesquisa. 😉</h3>`;
-        }, 500);
-        
+        //Verificando se existe algum voto definido no objeto 'data'
+        if (data.voto != undefined) {
+            console.log(data);
+            //Substituindo formulario por animação
+            let elem = document.querySelector('.rating');
+            elem.innerHTML = `<span class='c'><div class="c-loader"></div></span>`;
+            
+            //Timeout de 0,5seg para remover animação e escrever resultados e agradecimentos.
+            setTimeout(()=>{
+                elem.innerHTML = `
+                <p class='thank'>${data.nome}, Satisfação: ${data.voto}/5</p>
+                <h3 class='thank'>Obrigado por participar da pesquisa. 😉</h3>`;
+            }, 500);
+            
+        } else {
+            //Em caso de não haver nenhum voto definido no objeto 'data'
+            console.error("[01] PARAMENTRO RATING NÃO RECEBIDO");
+        }
     } else {
-        //Em caso de não haver nenhum voto definido no objeto 'data'
-        console.error("[01] PARAMENTRO RATING NÃO RECEBIDO");
+        console.error('[02] RATING NEGATIVO NÃO É RECEBIDO SEM COMENTARIO');
     }
 }
 
