@@ -33,7 +33,7 @@ function salveForm() {
     let data = new Object();
     data.voto = $("input[name=rating]").filter(":checked").val();
     data.comentario = getElement("comentario").value;
-    data.nome = getElement("nome").value == "" ? "Usuário" : "";
+    data.nome = getElement("nome").value == "" ? "Usuário" : getElement("nome").value;
     data.telefone = getElement("telefone").value;
 
     if (data.voto != undefined) {
