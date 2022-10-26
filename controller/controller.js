@@ -4,7 +4,8 @@ this.disable_submit();
 function enable_submit() {
     let btn = document.querySelector('.submit');
     btn.classList.add('not-disabled');
-    btn.classList.add('cursor', 'pointer');
+    btn.classList.add('pointer');
+    btn.classList.remove('default');
 }
 
 // Desligando botao
@@ -16,7 +17,8 @@ function disable_submit() {
     });
 
     btn.classList.remove('not-disabled');
-    btn.classList.add('cursor',  'default');
+    btn.classList.add('default');
+    btn.classList.remove('pointer');
 }
 
 //Liberando área do formulário apos voto
