@@ -2,24 +2,29 @@ this.disable_submit();
 
 // Ativando botao
 function enable_submit() {
-    $("button.submit").disabled = false;
-    $("button.submit").addClass("not-disabled");
+    let btn = document.querySelector('.submit');
+    btn.classList.add('not-disabled');
+    btn.classList.add('cursor', 'pointer');
 }
 
-// Disativa botao
+// Desligando botao
 function disable_submit() {
-    $("button.submit").disabled = true;
-    $("button.submit").removeClass("not-disabled");
-    $("button.submit").css("cursor", "default");
+    let btn = document.querySelector('.submit');
+    btn.addEventListener('submit', b => {
+        //Cancelando o evento 'submit' do botão
+        b.preventDefault();
+    });
+
+    btn.classList.remove('not-disabled');
+    btn.classList.add('cursor',  'default');
 }
 
-// Mostrando quadro de feedback apos voto
+//Liberando área do formulário apos voto
 $(".rating__input").on("click", function () {
-    var rating = this["value"];
+    let rating = this["value"];
     $(".rating__label").removeClass("active");
     $(this).siblings(".rating__label").addClass("active");
     $(".feedback").css("display", "block");
-
     rating_validate(rating);
 });
 
@@ -34,22 +39,33 @@ function salveForm() {
     data.voto = $("input[name=rating]").filter(":checked").val();
     data.comentario = getElement("comentario").value;
     data.nome = getElement("nome").value == "" ? "Usuário" : getElement("nome").value;
-    data.telefone = getElement("telefone").value;
 
+    //Verificando se existe algum voto definido no objeto 'data'
     if (data.voto != undefined) {
         console.log(data);
-        alert;
+        //Substituindo formulario por animação
+        let elem = document.querySelector('.rating');
+        elem.innerHTML = `<span class='c'><div class="c-loader"></div></span>`;
+        
+        //Timeout de 0,5seg para remover animação e escrever resultados e agradecimentos.
+        setTimeout(()=>{
+            elem.innerHTML = `
+            <p class='thank'>${data.nome}, Satisfação: ${data.voto}/5</p>
+            <h3 class='thank'>Obrigado por participar da pesquisa. 😉</h3>`;
+        }, 500);
+        
     } else {
+        //Em caso de não haver nenhum voto definido no objeto 'data'
         console.error("[01] PARAMENTRO RATING NÃO RECEBIDO");
     }
 }
 
-// Run enable button function based on input
+// Liberando botão de envio somente apos comentario, em casos de voto negativo (menor que 4)
 $(".feedback textarea").keyup(function () {
     if ($(".feedback textarea").val().length > 3) enable_submit();
 });
 
-// Enable or disable button by validation
+// Validando voto e mostrando mensagem se o voto for negativo (menor que 4)
 function rating_validate(val) {
     val <= 3 ? disable_submit() & $("#negative").css("display", "block") : enable_submit() & $("#negative").css("display", "none");
 }

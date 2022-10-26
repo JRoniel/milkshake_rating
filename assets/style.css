@@ -3,27 +3,20 @@
 body {
     font-family: "Source Sans Pro", Arial, sans-serif;
 }
+html {
+    height: 100%;
+}
 body {
+    background-image: url("../assets/milk-bg.jpg");
+    background-position: center;
+    background-size: cover;
     font-size: 18px;
-    background: #eee;
     color: #1f2024;
-}
-footer {
-    position: fixed;
-    padding-top: 100%;
-    color: #fff;
-}
-a {
-    text-decoration: none;
 }
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-}
-.fa-solid {
-    height: 80px;
-    width: 80px;
 }
 .rating {
     max-width: 400px;
@@ -45,10 +38,33 @@ ul {
     justify-content: space-between;
     padding: 1em 0;
 }
+.thank {
+    margin: 0;
+}
+.c {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+#negative,
 .disable,
 .feedback,
 .rating__input {
     display: none;
+}
+.c-loader {
+    align-items: center;
+    animation: 1s infinite is-rotating;
+    border: 6px solid #e5e5e5;
+    border-radius: 50%;
+    border-top-color: #51d4db;
+    height: 50px;
+    width: 50px;
+}
+@keyframes is-rotating {
+    to {
+        transform: rotate(1turn);
+    }
 }
 .rating__label {
     padding: 5px 3px;
@@ -118,12 +134,11 @@ ul {
     font-size: 15px;
 }
 #negative {
-    display: none;
     text-align: center;
     margin-top: 5px;
     margin-bottom: 5px;
 }
-button.not-disabled {
+.not-disabled {
     color: #fff;
     background-color: #3498db;
     text-shadow: 0 1px 1px #3498db;
